@@ -30,7 +30,7 @@ class BaseModel:
         """
         a_dict = self.__dict__
 
-        a_dict[__class__] = "BaseModel"
+        a_dict['__class__'] = "BaseModel"
         a_dict['created_at'] = a_dict['created_at'].isoformat()
         a_dict['updated_at'] = a_dict['updated_at'].isoformat()
 
