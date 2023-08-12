@@ -24,7 +24,7 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             
-            storage.new()
+            storage.new(self)
 
     def __str__(self):
         """Prints the cls arributes"""
