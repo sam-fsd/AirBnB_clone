@@ -34,7 +34,13 @@ class BaseModel:
         """ updates the public instance attribute
             updated_at with the current datetime
         """
-        self.updated_at = datetime.now()
+        now = datetime.now()
+        self.updated_at = now
+
+        for obj_key in storage.all():
+            obj = storage.all()[obj_key]
+            obj['updated_at'] = now.isoformat()
+
         storage.save()
 
     def to_dict(self):
