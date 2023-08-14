@@ -11,7 +11,7 @@ class FileStorage:
             __file_path (str): File path to the JSON file
             __objects (dict): Stores all objects
     """
-    __file_path = '/root/AirBnB_clone/data_file.json'
+    __file_path = 'data_file.json'
     __objects = {}
 
     def all(self):
@@ -29,7 +29,7 @@ class FileStorage:
 
     def save(self):
         """serializes __objects to the JSON file"""
-        with open(self.__file_path, 'w', encoding='utf-8') as f:
+        with open(self.__file_path, 'a', encoding='utf-8') as f:
             json.dump(self.__objects, f)
 
     def reload(self):
