@@ -37,20 +37,16 @@ class BaseModel:
         now = datetime.now()
         self.updated_at = now
 
-        for obj_key in storage.all():
-            obj = storage.all()[obj_key]
-            obj['updated_at'] = now.isoformat()
-
         storage.save()
 
     def to_dict(self):
         """ returns a dictionary containing all keys/values
             of __dict__ of the instance
         """
-        a_dict = self.__dict__
+        a_dict = self.__dict__.copy()
 
         a_dict['__class__'] = "BaseModel"
-        a_dict['created_at'] = a_dict['created_at'].isoformat()
-        a_dict['updated_at'] = a_dict['updated_at'].isoformat()
+        a_dict['created_at'] = self.created_at.isoformat()
+        a_dict['updated_at'] = self.updated_at.isoformat()
 
         return a_dict
